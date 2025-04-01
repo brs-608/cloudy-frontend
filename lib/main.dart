@@ -3,6 +3,7 @@ import 'package:cloudy/Bloc/Auth/Login/login_bloc.dart';
 import 'package:cloudy/Bloc/Auth/Register/register_bloc.dart';
 import 'package:cloudy/Bloc/Messages/chat_history_cubit.dart';
 import 'package:cloudy/Bloc/UserInfo/users_info_bloc.dart';
+import 'package:cloudy/Cubits/SearchCubits/search_cubit.dart';
 import 'package:cloudy/Cubits/auth_cubit.dart';
 import 'package:cloudy/Home/home.dart';
 import 'package:cloudy/SplashScreen/SplashScreen.dart';
@@ -28,6 +29,7 @@ class Cloudy extends StatelessWidget {
           BlocProvider(create: (_) => AuthCubit()),
           BlocProvider(create: (_) => UsersInfoBloc()),
           BlocProvider(create: (_) => ChatHistoryCubit()),
+          BlocProvider(create: (_) => SearchCubit()),
         ],
       child: MaterialApp(
 
