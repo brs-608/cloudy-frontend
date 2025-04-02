@@ -5,6 +5,7 @@ import 'package:cloudy/Bloc/Messages/chat_history_cubit.dart';
 import 'package:cloudy/Bloc/UserInfo/users_info_bloc.dart';
 import 'package:cloudy/Chat/chat_screen.dart';
 import 'package:cloudy/Cubits/SearchCubits/search_cubit.dart';
+import 'package:cloudy/Home/OtherProfile.dart';
 import 'package:cloudy/Utils/TokenUtil.dart';
 import 'package:cloudy/Widgets/ChatsWidget.dart';
 import 'package:cloudy/Widgets/OnlineWidget.dart';
@@ -243,7 +244,7 @@ class _MessagesState extends State<Messages> {
                                         FocusScope.of(context).requestFocus(focusNode);
                                           print("Tapped ${user['name']}");},
                                           onTap: (){
-                                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ChatScreen(userId: state.data["id"], receiverId: user["id"], partnerName: user["name"])));
+                                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OtherProfile(name: user["name"], email: user["email"], userId: user["id"])));
                                             focusNode.requestFocus();
                                           },
                                           child: SearchedUser(name: user["name"],email: user["email"],profilePic: "",id: user["id"],));

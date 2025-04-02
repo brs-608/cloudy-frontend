@@ -2,6 +2,7 @@ import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.da
 import 'package:cloudy/Bloc/Auth/Login/login_bloc.dart';
 import 'package:cloudy/Cubits/auth_cubit.dart';
 import 'package:cloudy/Home/messages.dart';
+import 'package:cloudy/Home/profile.dart';
 import 'package:cloudy/Utils/TokenUtil.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,7 @@ class _HomeState extends State<Home> {
   int _currentIndex = 0;
   List<Widget> _pages = [
       Messages(),
-      Center(child: Text("Second Page",style: TextStyle(fontSize: 26),),),
+      Profile(),
       Center(child: Text("Third Page",style: TextStyle(fontSize: 26),),),
   ];
   @override
@@ -48,7 +49,7 @@ class _HomeState extends State<Home> {
             gapLocation: GapLocation.none,
             icons: [
           Icons.chat,
-          Icons.call_sharp,
+          Icons.person,
           Icons.collections_bookmark,
         ], activeIndex: _currentIndex, onTap: (value){
             setState(() {
