@@ -233,26 +233,28 @@ class _MessagesState extends State<Messages> {
                                         child: Center(child: Text("Loading",style: GoogleFonts.poppins(fontSize: 18,color: Colors.white,fontWeight: FontWeight.w400),)),
                                       );
                                     }else if (state is SearchLoaded){
-                                      return Column(
-                                        children: state.users.map((user){
-                                          return BlocBuilder<UsersInfoBloc,UsersInfoState>(
-                                              builder: (context,state){
-                                                if(state is FetchedData){
-                                                  return GestureDetector(
-                                                  behavior: HitTestBehavior.opaque,
-                                                  onTapDown: (_) {
-                                        FocusScope.of(context).requestFocus(focusNode);
-                                          print("Tapped ${user['name']}");},
-                                          onTap: (){
-                                            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OtherProfile(name: user["name"], email: user["email"], userId: user["id"])));
-                                            focusNode.requestFocus();
-                                          },
-                                          child: SearchedUser(name: user["name"],email: user["email"],profilePic: "",id: user["id"],));
+                                      return SingleChildScrollView(
+                                        child: Column(
+                                          children: state.users.map((user){
+                                            return BlocBuilder<UsersInfoBloc,UsersInfoState>(
+                                                builder: (context,state){
+                                                  if(state is FetchedData){
+                                                    return GestureDetector(
+                                                    behavior: HitTestBehavior.opaque,
+                                                    onTapDown: (_) {
+                                          FocusScope.of(context).requestFocus(focusNode);
+                                            print("Tapped ${user['name']}");},
+                                            onTap: (){
+                                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => OtherProfile(name: user["name"], email: user["email"], userId: user["id"])));
+                                              focusNode.requestFocus();
+                                            },
+                                            child: SearchedUser(name: user["name"],email: user["email"],profilePic: "",id: user["id"],));
+                                                  }
+                                                  return Container();
                                                 }
-                                                return Container();
-                                              }
-                                          );
-                                        }).toList(),
+                                            );
+                                          }).toList(),
+                                        ),
                                       );
                                     }
                                     return Container();
